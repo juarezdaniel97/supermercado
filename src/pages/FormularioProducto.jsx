@@ -134,6 +134,7 @@ const FormularioProducto = () => {
                 <div className="flex justify-center">
                     <button
                             onClick={()=>navigate(-1)}
+                            // onClick={()=>navigate('../products/list')}
                             className="flex items-center mr-6 px-4 py-2 rounded-xl cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 transition"
                         >
                         <ArrowLeft size={18} /> Volver
