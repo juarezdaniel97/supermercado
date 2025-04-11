@@ -6,11 +6,12 @@ import Swal from 'sweetalert2';
 
 const Listado = () => {
 
-    const { products } = useProductsContext();
-    const [busqueda, setBusqueda] = useState('');
-    const navigate = useNavigate();
+    const { products, deleteProduct, getProductsAPI } = useProductsContext();
     
-    const {deleteProduct} = useProductsContext();
+    const navigate = useNavigate();
+
+    const [busqueda, setBusqueda] = useState('');
+    
 
     const productosFiltrados = products.filter(product => product.nombre.toLowerCase().includes(busqueda.toLowerCase()));
     
@@ -34,6 +35,9 @@ const Listado = () => {
     };
 
     
+    useEffect(() => {
+        getProductsAPI();
+    }, []);
     
     return (
         <div className="container mx-auto px-4 py-6 mb-10">

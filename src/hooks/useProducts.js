@@ -55,13 +55,17 @@ export const useProducts = () => {
     const addProduct = async (product) => {
         try {
             setLoading(true);
+            
             const response = await api.post('/products', product);
+            
             setProducts([...products, response.data]);
+            
             setError(null);
 
             toast.success('¡Producto Agregado!')
 
             return response.data;
+
         } catch (err) {
             setError('Error al añadir el producto');
             console.error('Error adding product:', err);
