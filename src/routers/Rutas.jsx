@@ -6,6 +6,7 @@ import Listado from "../pages/Listado";
 import FormularioProducto from "../pages/FormularioProducto";
 import ProductDetail from "../pages/ProductDetail";
 import Perfil from "../pages/Perfil";
+import NotFound from "../pages/NotFound";
 
 const Rutas = () => {
 
@@ -22,7 +23,7 @@ const Rutas = () => {
                 <Route path="products/:id" element={<>Eliminado</>}/>
             </Route>
 
-            <Route path="*" element={<><p>Página no encontrada</p></>}/>
+            <Route path="*" element={<NotFound/>}/>
         </Routes>
     )
 }
