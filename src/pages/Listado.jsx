@@ -3,6 +3,9 @@ import { useProductsContext } from '../contexts/ProductsContext';
 import { FileText, Trash2, Plus, Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import ButtonAdd from '../components/shared/admin/ButtonAdd';
+import ButtonDetails from '../components/shared/admin/ButtonDetails';
+import ButtonDelete from '../components/shared/admin/ButtonDelete';
 
 const Listado = () => {
 
@@ -58,22 +61,23 @@ const Listado = () => {
 
             {/* Contenedor con altura fija y scroll */}
             <div className="relative rounded-xl shadow-lg bg-white h-96 overflow-auto">
-                            <table className="w-full table-fixed divide-y divide-gray-300">
-                                <thead className="bg-gray-100 sticky top-0 z-10">
-                                    <tr>
-                                    <th className="px-6 py-3 text-left text-xl font-bold text-gray-600 uppercase tracking-wider w-1/4">Producto</th>
-                                    <th className="px-6 py-3 text-left text-xl font-bold text-gray-600 uppercase tracking-wider w-1/5">Categoría</th>
-                                    <th className="px-6 py-3 text-left text-xl font-bold text-gray-600 uppercase tracking-wider w-1/6">Precio</th>
-                                    <th className="px-6 py-3 text-left text-xl font-bold text-gray-600 uppercase tracking-wider w-1/6">Stock</th>
-                                    <th className="px-6 py-3 text-right text-xl font-bold text-gray-600 uppercase tracking-wider w-1/6">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="bg-white divide-y divide-gray-100">
-                                    {productosFiltrados.length === 0 ? (
-                                    <tr>
-                                        <td colSpan="5" className="text-center py-6 text-gray-500">No se encontraron productos.</td>
-                                    </tr>
-                                    ) : (
+                <table className="w-full table-fixed divide-y divide-gray-300">
+                    <thead className="bg-gray-100 sticky top-0 z-10">
+                        <tr>
+                            <th className="px-6 py-3 text-left text-xl font-bold text-gray-600 uppercase tracking-wider w-1/4">Producto</th>
+                            <th className="px-6 py-3 text-left text-xl font-bold text-gray-600 uppercase tracking-wider w-1/5">Categoría</th>
+                            <th className="px-6 py-3 text-left text-xl font-bold text-gray-600 uppercase tracking-wider w-1/6">Precio</th>
+                            <th className="px-6 py-3 text-left text-xl font-bold text-gray-600 uppercase tracking-wider w-1/6">Stock</th>
+                            <th className="px-6 py-3 text-right text-xl font-bold text-gray-600 uppercase tracking-wider w-1/6">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-100">
+                        {
+                            productosFiltrados.length === 0 ? (
+                                <tr>
+                                    <td colSpan="5" className="text-center py-6 text-gray-500">No se encontraron productos.</td>
+                                </tr>
+                                ) : (
                                     productosFiltrados.map((product) => (
                                         <tr key={product.id} className="hover:bg-gray-50 transition">
                                             <td className="px-6 py-4 whitespace-nowrap">
@@ -88,36 +92,24 @@ const Listado = () => {
                                             <td className="px-6 py-4 text-sm text-gray-700">${product.precio}</td>
                                             <td className="px-6 py-4 text-sm text-gray-700">{product.stock}</td>
                                             <td className="px-6 py-4 text-right text-sm">
-                                                <button
-                                                    onClick={() => navigate(`../products/${product.id}/details`)}
-                                                    className="text-indigo-600 hover:text-indigo-800 mr-4 cursor-pointer"
-                                                    title="Ver detalles"
-                                                >
-                                                    <FileText size={25} />
-                                                </button>
-                                                <button
-                                                    onClick={() => handleEliminar(product.id)}
-                                                    className="text-red-600 hover:text-red-800 cursor-pointer"
-                                                    title="Eliminar producto"
-                                                >
-                                                <Trash2 size={25} />
-                                                </button>
+                                                <ButtonDetails
+                                                    action={() => navigate(`../products/${product.id}/details`)}
+                                                />
+                                                
+                                                <ButtonDelete
+                                                    action={() => handleEliminar(product.id)}
+                                                />
                                             </td>
                                         </tr>
                                     ))
-                                    )}
-                                </tbody>
-                            </table>
+                        )}
+                    </tbody>
+                </table>
             </div>
-            
-            {/* FAB botón para agregar producto */}
-            <button
-                            onClick={() => navigate('../products/create')}
-                            className="fixed bottom-6 right-6  cursor-pointer flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-full shadow-lg transition duration-200"
-                        >
-                            <Plus size={18} />
-                            <span className="text-sm font-medium">Agregar Producto</span>
-            </button>
+
+            <ButtonAdd
+                action={() => navigate('../products/create')}
+            />
 
         </div>
     )

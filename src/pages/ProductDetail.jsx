@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { ArrowLeft, Edit3, ShoppingCart } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useProductsContext } from '../contexts/ProductsContext';
+import ButtonAdmin from '../components/shared/ButtonAdmin';
+import ButtonEdit from '../components/shared/admin/ButtonEdit';
+import ButtonBack from '../components/shared/admin/ButtonBack';
 
 const ProductDetail = () => {
     const [product, setProduct] = useState(0)
@@ -41,17 +44,13 @@ const ProductDetail = () => {
                 </div>
 
                 <div className="flex gap-4 pt-4">
-                    <button
-                        onClick={()=>navigate(-1)}
-                        className="flex items-center gap-2 px-4 py-2 rounded-xl cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 transition"
-                    >
-                        <ArrowLeft size={18} /> Volver
-                    </button>
-                    <button 
-                        onClick={()=> navigate(`../products/${product.id}/edit`)}
-                        className="flex items-center gap-2 px-4 py-2 rounded-xl cursor-pointer bg-blue-600 hover:bg-blue-700 text-white transition">
-                        <Edit3 size={18} /> Editar
-                    </button>
+
+                    <ButtonBack
+                        action={() => navigate(-1)}
+                    />
+                    <ButtonEdit
+                        action={() => navigate(`../products/${product.id}/edit`)}
+                    />
                 </div>
             </div>
         </div>

@@ -3,7 +3,10 @@ import { useForm } from 'react-hook-form'
 import { useProductsContext } from '../contexts/ProductsContext'
 import toast from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Edit, Save } from 'lucide-react'
+import ButtonAdmin from '../components/shared/ButtonAdmin'
+import ButtonBack from '../components/shared/admin/ButtonBack'
+import SaveButton from '../components/shared/admin/SaveButton'
 
 const FormularioProducto = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm()
@@ -131,20 +134,15 @@ const FormularioProducto = () => {
                     </div>
                 </div>
 
-                <div className="flex justify-center">
-                    <button
-                            onClick={()=>navigate(-1)}
-                            // onClick={()=>navigate('../products/list')}
-                            className="flex items-center mr-6 px-4 py-2 rounded-xl cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-800 transition"
-                        >
-                        <ArrowLeft size={18} /> Volver
-                    </button>
-                    <button
-                        type="submit"
-                        className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 cursor-pointer rounded-lg shadow-md"
-                    >
-                        { id ? 'Actualizar Producto' : 'Guardar Producto'}
-                    </button>
+                <div className="flex justify-center gap-4">
+
+                    <ButtonBack
+                        action={() => navigate(-1)}
+                    />
+
+                    <SaveButton
+                        editing={id}
+                    />
 
                 </div>
             </form>
