@@ -7,15 +7,6 @@ const Perfil = () => {
 
     console.log('currentUser ->', currentUser);
     
-    const profile = {
-        name: "Verna Wisozk",
-        avatar: "https://avatars.githubusercontent.com/u/25619441",
-        usuario: "Duane_Klocko",
-        password: "mYpXdmFpWSCa0LR",
-        admin: false,
-        id: "1"
-    };
-    
     return (
         <div className='mt-15   mb-15'>
             <div className="max-w-sm mx-auto bg-white shadow-xl rounded-2xl overflow-hidden p-6 space-y-4">
@@ -38,6 +29,7 @@ const Perfil = () => {
                 <button className="w-full mt-4 cursor-pointer bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-xl transition-all">
                     Editar perfil
                 </button>
+                
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useProductsContext } from '../contexts/ProductsContext';
-import { FileText, Trash2, Plus, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import ButtonAdd from '../components/shared/admin/ButtonAdd';
@@ -37,7 +37,6 @@ const Listado = () => {
             });
     };
 
-    
     useEffect(() => {
         getProductsAPI();
     }, []);
@@ -59,7 +58,7 @@ const Listado = () => {
                 </div>
             </div>
 
-            {/* Contenedor con altura fija y scroll */}
+            {/* Container table */}
             <div className="relative rounded-xl shadow-lg bg-white h-96 overflow-auto">
                 <table className="w-full table-fixed divide-y divide-gray-300">
                     <thead className="bg-gray-100 sticky top-0 z-10">
@@ -82,10 +81,10 @@ const Listado = () => {
                                         <tr key={product.id} className="hover:bg-gray-50 transition">
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex items-center">
-                                                <img className="h-10 w-10 rounded object-cover shadow-sm" src={product.imagen} alt={product.nombre} />
-                                                <div className="ml-4">
-                                                    <p className="text-sm font-medium text-gray-900">{product.nombre}</p>
-                                                </div>
+                                                    <img className="h-10 w-10 rounded object-cover shadow-sm" src={product.imagen} alt={product.nombre} />
+                                                    <div className="ml-4">
+                                                        <p className="text-sm font-medium text-gray-900">{product.nombre}</p>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td className="px-6 py-4 text-sm text-gray-700">{product.categoria}</td>

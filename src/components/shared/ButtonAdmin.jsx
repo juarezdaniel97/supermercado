@@ -40,8 +40,6 @@ const ButtonAdmin = ({
         }
     }
 
-    // Determinar la clase para el espaciado de iconos
-    const iconSpacing = iconPosition === "left" ? "mr-2" : "ml-2";
 
     return (
         <button
@@ -63,22 +61,6 @@ const ButtonAdmin = ({
                 <span className="ml-2 inline-flex items-center">{icon}</span>
             )}
 
-            {/* Si la variante es "edit" o hay un icono y está a la izquierda */}
-            {/* {(icon && iconPosition === "left") && (
-                <span className={variant !== "edit" ? iconSpacing : ""}>{icon}</span>
-            )} */}
-            
-            {/* {name} */}
-            
-            {/* Si hay un icono y está a la derecha */}
-            {/* {(icon && iconPosition === "right") && (
-                <span className={iconSpacing}>{icon}</span>
-            )} */}
-
-
-            {/* {(icon && iconPosition === "left") && icon}
-            <span>{name}</span>
-            {(icon && iconPosition === "right") && icon} */}
         </button>
     )
 }

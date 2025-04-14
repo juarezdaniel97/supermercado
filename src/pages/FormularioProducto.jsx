@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useProductsContext } from '../contexts/ProductsContext'
-import toast from 'react-hot-toast'
 import { useNavigate, useParams } from 'react-router-dom'
-import { ArrowLeft, Edit, Save } from 'lucide-react'
-import ButtonAdmin from '../components/shared/ButtonAdmin'
 import ButtonBack from '../components/shared/admin/ButtonBack'
 import SaveButton from '../components/shared/admin/SaveButton'
 
@@ -18,9 +15,10 @@ const FormularioProducto = () => {
 
 
     useEffect(() => {
-
         async function handleUpdate() {
+            
             if(id){
+
                 const product = await getProduct(id);
                 
                 if (product) {
