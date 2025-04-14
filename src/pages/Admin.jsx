@@ -8,13 +8,16 @@ const Admin = () => {
 
     const location = useLocation();
     const routeAdmin = location.pathname === '/admin';
+    const routeProfile = location.pathname === '/profile';
+    const isBodyRoute = location.pathname === '/admin' || location.pathname === '/profile';
+    
     return (
         <div>
             <HeaderAdmin/>
 
             <div className="container mx-auto px-4">
                 {
-                    routeAdmin ? <Body/> : (<Outlet/>)
+                    isBodyRoute ? <Body/> : (<Outlet/>)
                 }
             </div>
             

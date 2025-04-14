@@ -23,19 +23,26 @@ export const useUsers = () => {
 
     const getUsersAPI = async () => {
         try {
+            
             setLoading(true);
+            
             const response = await api.get('/users');
+            
             setUsers(response.data);
+            
             setError(null);
+
         } catch (err) {
             setError('Error al cargar los usuarios');
             console.error('Error fetching users:', err);
+
         } finally {
             setLoading(false);
         }
     };
 
     const login = (username, password) => {
+        
         const user = users.find(user => user.usuario === username && user.password === password);
         
         if (user) {

@@ -1,10 +1,10 @@
 import React from 'react'
-// import ProductCard from '../components/ProductCard'
 import Body from '../components/layout/Body'
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 
 const Home = () => {
+    
     return (
         <div>
             {/* Header */}
